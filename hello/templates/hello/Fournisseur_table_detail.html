@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load bootstrap4 django_tables2 crispy_forms_tags %}
+{% block content%}
+  <h2> liste des fournisseur: </h2>
+   <br><br>
+  <!-- on affiche un bouton pour ajouter une ligne facture -->
+  <a href="{% url 'fournisseur_table_create' %}" class="btn btn-primary">Ajouter un fournisseur</a>
+  <br><br>
+  <div class="col-lg-10">
+  <!-- on affiche les lignes de la table clients -->
+	{% render_table fournisseur %}
+  </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+{% extends 'base.html' %}
+{% load bootstrap4 django_tables2 crispy_forms_tags %}
+{% block content%}
+  <h2> liste des clients: </h2>
+   <br><br>
+  <!-- on affiche un bouton pour ajouter une ligne facture -->
+  <a href="{% url 'client_table_create' %}" class="btn btn-primary">Ajouter un client</a>
+  <br><br>
+  <div class="col-lg-10">
+  <!-- on affiche les lignes de la table clients -->
+	{% render_table client %}
+  </div>
+ {% endblock %}

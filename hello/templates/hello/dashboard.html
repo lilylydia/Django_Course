@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load bootstrap4 django_tables2 crispy_forms_tags %}
+{% block content%}
+  <br>
+  <h2> liste des fournisseurs: </h2>
+   <br>
+  <div class="col-lg-10">
+  <!-- on affiche les fournisseur -->
+	{% render_table fournisseurDash %}
+  </div>
+  <h2> liste des clients: </h2>
+   <div class="col-lg-10">
+  <!-- on affiche les  clients -->
+	{% render_table clientDash %}
+  </div>
+  <div class="col-lg-10">
+  <!-- on affiche levolution du chiffre daffaire -->
+  <h2> Evolution du chiffre d'affaire en fonction de la date </h2>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <canvas id="pie-chart" width="400" height="200"></canvas>
+  <canvas id="radar-chart" width="400" height="200"></canvas>
+  <script>
+
+    var config = {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: {{ dataLine|safe }},
+          label: "l'évolution du chiffre d'affaire au jour le jour"
+        }],
+        labels: {{ labelsLine|safe }}
+      },
+      options: {
+        elements: {
+        line: {
+            tension: 0
+        }
+    }      }
+
+    };
+
+    var configRadar = {
+      type: 'radar',
+      data: {
+        datasets: [{
+          data: {{ dataRadar|safe }},
+          label: "l'évolution du chiffre d'affaire au jour le jour"
+        }],
+        labels: {{ labelsRadar|safe }}
+      },
+    };
+
+    window.onload = function() {
+      var ctx = document.getElementById('pie-chart').getContext('2d');
+      window.myPie = new Chart(ctx, config);
+      ctx = document.getElementById('radar-chart').getContext('2d');
+      window.myRadar = new Chart(ctx, configRadar);
+    };
+
+  </script>
+  </div>
+ {% endblock %}

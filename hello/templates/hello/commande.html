@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load bootstrap4 django_tables2 crispy_forms_tags %}
+{% block content%}
+  <h2>{{ title }}</h2>
+  <br><br>
+  <br><br>
+  <div class="col-lg-6">
+  <!-- on affiche les lignes de la table des commandes -->
+	{% render_table table %}
+  </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load bootstrap4 django_tables2 crispy_forms_tags %}
+{% block content%}
+  <h2>{{ title }}</h2>
+  <br><br>
+<h2>Mon panier</h2>
+  <br><br>
+  <div class="col-lg-6">
+  <!-- on affiche les lignes de la table des objets -->
+	{% render_table table %}
+  </div>
+
+  <!-- on affiche un bouton pour confirmer le panier et créer une commande -->
+  <a href="{% url 'confirmer_panier' %}" class="btn btn-primary">Commander</a>
+{% endblock %}

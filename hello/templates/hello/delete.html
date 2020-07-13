@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load bootstrap4 django_tables2 crispy_forms_tags %}
+{% block content%}
+<h2>{{ title }}</h2>
+    <br>
+	<form method="post">{% csrf_token %}
+    <p>Voulez-vous supprimer {{ object }} ?</p>
+    <button type="submit" class="btn btn-danger">Confirmer</button>
+    <a href="{{request.META.HTTP_REFERER}}" class="btn btn-secondary">Annuler</a>
+	</form>
+{% endblock %}

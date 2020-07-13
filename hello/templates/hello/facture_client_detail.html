@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load bootstrap4 django_tables2 crispy_forms_tags %}
+{% block content%}
+   <div class="col-lg-6">
+  <!-- on affiche les factures  d'un client facture -->
+  {% render_table client %}
+  </div>
+{% endblock %}
